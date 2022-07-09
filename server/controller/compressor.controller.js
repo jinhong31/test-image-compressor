@@ -62,7 +62,6 @@ exports.upload = async (req, res) => {
         compressedURL: process.env.API_URL + compressedPath,
     });
     newSchema = await Schema.save();
-    console.log(newSchema)
     return res.json({ link });
 }
 
