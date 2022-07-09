@@ -2,7 +2,7 @@ import { useState } from "react";
 import imageCompression from "browser-image-compression";
 import Card from "react-bootstrap/Card";
 
-const imageCompressor = () => {
+export default function Home() {
   const [compressedLink, setCompressedLink] = useState(
     "http://navparivartan.in/wp-content/uploads/2018/11/placeholder.png"
   );
@@ -37,15 +37,15 @@ const imageCompressor = () => {
     let output;
     imageCompression(originalImage, options).then((x) => {
       output = x;
-
+      console.log(output.size);
       const downloadLink = URL.createObjectURL(output);
+      console.log(downloadLink);
       setCompressedLink(downloadLink);
     });
 
     setClicked(true);
     return 1;
   };
-
   return (
     <div className="m-5">
       <div className="text-light text-center">
@@ -112,7 +112,5 @@ const imageCompressor = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default imageCompressor;
+  )
+}
