@@ -1,0 +1,7 @@
+mongoURI=mongodb+srv://'username':'password'@cluster0.p8hsoma.mongodb.net/compressor?retryWrites=true&w=majority
+AWS_ACCESS_KEY=
+AWS_SECRET_ACCESS_KEY=
+Region=
+AWSBucketName=
+API_URL=http://localhost:5000/
+PORT=5000

@@ -1,7 +1,8 @@
 import { useState } from "react";
-import imageCompression from "browser-image-compression";
 import Card from "react-bootstrap/Card";
-
+import axios from "axios";
+import { saveAs } from "file-saver";
+import CONSTANT from "../constant/index"
 export default function Home() {
   const [compressedLink, setCompressedLink] = useState(
     "http://navparivartan.in/wp-content/uploads/2018/11/placeholder.png"
@@ -20,32 +21,24 @@ export default function Home() {
     setUploadImage(true);
   };
 
-  const click = (e) => {
+  const click = async (e) => {
     e.preventDefault();
-
-    const options = {
-      minSizeKB: 1,
-      maxWidthOrHeight: 500,
-      useWebWorker: true
-    };
-
-    if (options.minSizeKB >= originalImage.size / 1024) {
-      alert("Image is too small, can't be Compressed!");
-      return 0;
+    const data = new FormData();
+    data.append('file', originalImage);
+    try {
+      const downloadLink = await axios.post(`${CONSTANT.API_URL}/compressor/upload`, data)
+      setCompressedLink(downloadLink.data.link);
+      setClicked(true);
+    } catch (error) {
+      console.log('Error : ', error);
     }
 
-    let output;
-    imageCompression(originalImage, options).then((x) => {
-      output = x;
-      console.log(output.size);
-      const downloadLink = URL.createObjectURL(output);
-      console.log(downloadLink);
-      setCompressedLink(downloadLink);
-    });
-
-    setClicked(true);
     return 1;
   };
+
+  const downloadImage = (e) => {
+    saveAs(compressedLink, originalImage.name);
+  }
   return (
     <div className="m-5">
       <div className="text-light text-center">
@@ -98,13 +91,12 @@ export default function Home() {
           <Card.Img variant="top" src={compressedLink}></Card.Img>
           {clicked ? (
             <div className="d-flex justify-content-center">
-              <a
-                href={compressedLink}
-                download={outputFileName}
+              <button
+                onClick={(e) => downloadImage()}
                 className="mt-2 btn btn-dark w-75"
               >
                 Download
-              </a>
+              </button>
             </div>
           ) : (
             <></>
