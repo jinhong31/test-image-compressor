@@ -11,7 +11,6 @@ const imageCompressor = () => {
   const [clicked, setClicked] = useState(false);
   const [uploadImage, setUploadImage] = useState(false);
   const [outputFileName, setOutputFileName] = useState("");
-  const [progress, setProgress] = useState(0);
 
   const handle = (e) => {
     const imageFile = e.target.files[0];
