@@ -46,7 +46,7 @@ exports.upload = async (req, res) => {
         .webp({ quality: 20 })
         .toFile(compressedPath);
 
-    const link = `${process.env.API_URL}/${compressedPath}`;
+    const link = `${process.env.API_URL + compressedPath}`;
     const contentType = req.file.mimetype;
 
     //upload s3 bucket
