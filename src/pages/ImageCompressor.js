@@ -11,6 +11,7 @@ const imageCompressor = () => {
   const [clicked, setClicked] = useState(false);
   const [uploadImage, setUploadImage] = useState(false);
   const [outputFileName, setOutputFileName] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const handle = (e) => {
     const imageFile = e.target.files[0];
@@ -37,8 +38,9 @@ const imageCompressor = () => {
     let output;
     imageCompression(originalImage, options).then((x) => {
       output = x;
-
+      console.log(output.size);
       const downloadLink = URL.createObjectURL(output);
+      console.log(downloadLink);
       setCompressedLink(downloadLink);
     });
 

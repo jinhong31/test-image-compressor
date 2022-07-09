@@ -4,7 +4,8 @@
     "es6": true
   },
   "extends": [
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier"
   ],
   "globals": {
     "Atomics": "readonly",
