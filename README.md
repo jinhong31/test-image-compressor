@@ -1,4 +1,19 @@
+1. Clone one of the example apps from ReactNative site:
+https://github.com/Rahul-Pandey7/react-image-compressor
 
+2. Upgrade this to the newest version of React
+react-latest-version branch
+
+3. Convert into using the latest NextJS framework
+next-latest-version branch
+
+4. Add a feature where after the image compression, the resulting image will be
+uploaded automatically to an S3 bucket. (You may use a plugin)
+
+main branch
+5. Create a Postman collection that will show these images can be downloaded from a
+RESTful API.
+main branch
 
 Restful APIs
 GET: http://localhost:5000/api/compressor 
