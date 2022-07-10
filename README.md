@@ -16,7 +16,7 @@ RESTful API.
 main branch
 
 Restful APIs
-GET: http://localhost:5000/api/compressor 
+GET: http://localhost:5000/api/compressor .
 Get all converted images.
 
 GET: http://localhost:5000/api/compressor/show?id='62c9af94cb339ad2b14e66fc'
